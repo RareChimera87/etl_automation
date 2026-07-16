@@ -3,3 +3,4 @@ pandas
 tenacity
 schedule
 python-dotenv
+sqlalchemy
