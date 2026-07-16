@@ -6,3 +6,4 @@ venv/
 *.xlsx
 *.pdf
 .DS_Store
+*.log
