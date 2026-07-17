@@ -46,7 +46,7 @@ def run():
 if ENV == "production":
     schedule.every().hour.do(run)
 else:
-    schedule.every(10).seconds.do(run)
+    schedule.every(50).seconds.do(run)
 
 
 
