@@ -1,4 +1,4 @@
-import os, schedule, time, extract, logging, transform
+import os, schedule, time, extract, logging, transform, load
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -11,7 +11,7 @@ params = {
 }
 
 logging.basicConfig(
-    filename="extract.log",
+    filename="logs.log",
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
@@ -26,9 +26,10 @@ def run():
             raise ValueError("No data fetched. Skipping transformation.")
         logging.info("Data fetched successfully.")
         transformed_data = transform.transform_data(data)
-        print(transformed_data.head())  # Display the first few rows of the transformed data
-        logging.info("Data transformed successfully.")
+        #print(transformed_data.head()) 
 
+        logging.info("Data transformed successfully.")
+        load.load_data(transformed_data)
         #logging.info(f"Data: {data}")
 
     except ValueError as ve:

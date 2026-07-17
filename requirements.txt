@@ -4,3 +4,4 @@ tenacity
 schedule
 python-dotenv
 sqlalchemy
+psycopg2

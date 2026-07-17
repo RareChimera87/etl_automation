@@ -1,7 +1,15 @@
 from datetime import datetime, timezone
 import pandas as pd
+import logging
+
+logging.basicConfig(
+    filename="logs.log",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+)
 
 def transform_data(data):
+    logging.info("Starting the data transformation process...")
     """
     Transforms the raw data into a structured format.
 
@@ -11,10 +19,10 @@ def transform_data(data):
     Returns:
         pd.DataFrame: Transformed data in a pandas DataFrame.
     """
-    # Convert the list of dictionaries into a DataFrame
+    
     df = pd.DataFrame(data)
 
-    # Select relevant columns (you can adjust this based on your needs)
+    
     relevant_columns = [
         "id",
         "symbol",
@@ -29,7 +37,7 @@ def transform_data(data):
     ]
     df = df[relevant_columns]
 
-    # Rename columns for clarity
+    logging.info("Relevant columns selected.")
     df.rename(columns={
         "id": "coin_id",
         "symbol": "coin_symbol",
@@ -45,4 +53,5 @@ def transform_data(data):
     }, inplace=True)
     df["last_updated_timestamp"] = pd.to_datetime(df["last_updated_timestamp"])
     df["extracted_at"] = datetime.now(timezone.utc) 
+    logging.info("Data transformation completed successfully.")
     return df
