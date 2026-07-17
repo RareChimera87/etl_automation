@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS etl_automation_project.crypto_prices (
     low_24h_usd NUMERIC(20, 10) NOT NULL,
     price_change_pct_24h NUMERIC(10, 5) NOT NULL,
     last_updated_timestamp TIMESTAMP WITH TIME ZONE NOT NULL,
-    extracted_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+    extracted_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
 
     PRIMARY KEY (coin_id, extracted_at)
 );

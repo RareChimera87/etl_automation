@@ -6,7 +6,7 @@ from sqlalchemy.dialects.postgresql import insert
 
 
 logging.basicConfig(
-    filename="logs.log",
+    filename="logs/logs.log",
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
@@ -40,7 +40,7 @@ def create_db_engine():
         
 engine = create_db_engine()
 metadata = MetaData()
-crypto_prices_table = Table("crypto_prices", metadata, autoload_with=engine)
+crypto_prices_table = Table("crypto_prices", metadata, autoload_with=engine, schema="etl_automation_project")
 
 
 @retry(stop=stop_after_attempt(5), wait=wait_fixed(3))

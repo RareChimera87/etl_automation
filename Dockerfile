@@ -10,7 +10,9 @@ COPY src/ ./src
 
 COPY config/ ./config
 
-RUN useradd -m appuser
+RUN mkdir -p /app/logs && \
+    useradd -m appuser && \
+    chown -R appuser:appuser /app
 USER appuser
 
-CMD ["python", "main.py"]
+CMD ["python", "./src/main.py"]

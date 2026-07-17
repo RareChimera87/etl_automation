@@ -2,7 +2,7 @@ import requests, logging
 from tenacity import retry, stop_after_attempt, wait_fixed
 
 logging.basicConfig(
-    filename="logs.log",
+    filename="logs/logs.log",
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
